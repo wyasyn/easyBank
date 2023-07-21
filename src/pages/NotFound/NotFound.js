@@ -4,51 +4,21 @@ import { motion } from "framer-motion"
 
 function NotFound() {
 
-  const myVariant = {
-   visible: {
-    y: 0,
-    scale: 1,
-    transition: {
-      type: "spring",
-      stiffness: 70,
-      damping: 30,
-      delay: 0.3,
-      when: "beforeChildren",
-    }
-   },
-   hidden: {
-    y: -700,
-    scale: .2,
-   }
-  }
-
-  const myBoxVariant = {
-   visible: {
-    opacity: 1,
-    staggerChildren: .2,
-   },
-   hidden: {
-    opacity:0,
-   }
-  }
-
-
-
   return (
     <div className='not-found'>
       <div className="not-found-container">
         <motion.div 
             className="square"
-            variants={myVariant}
-            initial="hidden"
-            animate="visible"
-
+            whileInView={{ y: [-200, 0], opacity: [0, 1]}}
+            transition={{ duration: 1, delayChildren: 0.5}}
             >
 
               {[1,2,3,4].map(box => (
                 <motion.div 
                 className='box'
-                variants={myBoxVariant}
+                whileInView={{ opacity: [0, 1]}}
+                whileHover={{opacity: 0.7}}
+                transition={{ duration: 1}}
                 ></motion.div>
               ))}
 
